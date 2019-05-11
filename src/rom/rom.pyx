@@ -3,6 +3,7 @@ from libc.stdio cimport fopen, fread, fclose
 import numpy as np
 
 DEF ROM_HEADER_SIZE = 192
+DEF ROM_HEADER_LOGO_SIZE = 156
 DEF ROM_HEADER_GAME_TITLE_SIZE = 12
 DEF ROM_HEADER_GAME_CODE_SIZE = 4
 DEF ROM_HEADER_MAKER_CODE_SIZE = 2
@@ -32,7 +33,8 @@ cdef class ROM:
 
 cdef class ROMHeader:
     cpdef public unsigned int entry_point_address
-    cpdef unsigned char[156] logo
+    # noinspection PyUnresolvedReferences
+    cpdef unsigned char[ROM_HEADER_LOGO_SIZE] logo
     cpdef public str game_title
     cpdef public str game_code
     cpdef public str maker_code
