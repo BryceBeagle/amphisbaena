@@ -1,0 +1,11 @@
+# Cython build
+*.so
+*.c
+build/
+cython_debug/
+
+# Binaries
+roms/*.gba
+
+# Ignore docs while we have others' documentation in here during devel
+doc/
