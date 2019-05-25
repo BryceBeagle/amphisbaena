@@ -1,24 +1,15 @@
-ctypedef enum InstructionTypes:
-    DATA_PROCESSING,
-    MULTIPLY,
-    MULTIPLY_LONG,
-    SINGLE_DATA_SWAP,
-    BRANCH_AND_EXCHANGE,
-    HALFWORD_DATA_TRANSFER_IMMEDIATE_OFFSET,
-    SINGLE_DATA_TRANSFER,
-    BLOCK_DATA_TRANSFER,
-    BRANCH,
-    COPROCESSOR_DATA_TRANSFER,
-    COPROCESSOR_DATA_OPERATION,
-    COPROCESSOR_REGISTER_TRANSFER,
-    SOFTWARE_INTERRUPT,
-    UNDEFINED
+cdef class Instruction:
+    def __init__(self, unsigned int instruction):
+        self.instruction = instruction
+        self.condition = Instruction._condition(instruction)
 
-cdef class BaseInstruction:
+    @staticmethod
+    cdef unsigned int bit_range(unsigned int instruction, int start, int end):
+        """Get range of bits from uint32. Inclusive-inclusive"""
+        cdef int left_shift = 31 - end
+        cdef int right_shift = left_shift + start
+        return instruction << left_shift >> right_shift
 
-    def __init__(self):
-        print(self.condition)
-
-    property condition:
-        def __get__(self):
-            return 0b0000
+    @staticmethod
+    cdef Condition _condition(unsigned int instruction):
+        return <Condition> Instruction.bit_range(instruction, 28, 31)
