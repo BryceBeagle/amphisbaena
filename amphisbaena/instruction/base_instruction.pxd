@@ -103,7 +103,7 @@ cpdef public enum Condition:
     AL = 0b1110,  # Always
     RESERVED = 0b1111  # Must never be used
 
-ctypedef enum Register:
+cpdef public enum Register:
     # System and User mode
     R00 = 0b0000,
     R01 = 0b0001,
