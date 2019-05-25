@@ -18,14 +18,6 @@ cdef class Instruction:
 
 ctypedef bint Flag
 
-cdef class MultiplyInstruction(Instruction):
-    cpdef public Flag a
-    cpdef public Flag s  # Update CSPR flags
-    cpdef public Register rd
-    cpdef public Register rn
-    cpdef public Register rs
-    cpdef public Register rm
-
 cdef class MultiplyLongInstruction(Instruction):
     cpdef public Flag u
     cpdef public Flag a
