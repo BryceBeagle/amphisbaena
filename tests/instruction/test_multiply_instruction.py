@@ -1,6 +1,6 @@
-from amphisbaena.instruction.multiply_instruction import MultiplyInstruction
+from amphisbaena.instruction import MultiplyInstruction
 # noinspection PyUnresolvedReferences
-from amphisbaena.instruction.base_instruction import Condition, Register
+from amphisbaena.instruction import Condition, Register
 
 
 def test_multiply_instruction_bit_fields():
