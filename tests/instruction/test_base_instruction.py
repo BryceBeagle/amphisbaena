@@ -3,7 +3,7 @@ from amphisbaena.instruction.base_instruction import Instruction
 from amphisbaena.instruction.base_instruction import Condition
 
 
-def test_condition():
+def test_instruction_conditions():
     inst = 0b00000000_00000000_00000000_00000000
     assert Instruction(inst).condition == Condition.EQ
 
