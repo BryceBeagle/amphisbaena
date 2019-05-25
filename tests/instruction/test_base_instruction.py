@@ -1,6 +1,6 @@
-from amphisbaena.instruction.base_instruction import Instruction
+from amphisbaena.instruction import Instruction
 # noinspection PyUnresolvedReferences
-from amphisbaena.instruction.base_instruction import Condition
+from amphisbaena.instruction import Condition
 
 
 def test_instruction_conditions():
