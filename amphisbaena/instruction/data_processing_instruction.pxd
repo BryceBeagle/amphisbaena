@@ -7,8 +7,8 @@ cdef class DataProcessingInstruction(Instruction):
     """Opcode"""
     cpdef public Flag i
     """Immediate operand"""
-    cpdef public Flag s  # Update CSPR flags
-    """Set condition codes"""
+    cpdef public Flag s
+    """Set CSPR condition codes"""
     cpdef public Register rn
     """1st operand register"""
     cpdef public Register rd
