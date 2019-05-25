@@ -57,6 +57,7 @@ setup(name='amphisbaena',
                 "amphisbaena.rom"],
       ext_modules=[],
       requires=['Cython', 'numpy'],
+      tests_require=["pytest"],
       include_dirs=['.', numpy.get_include()],
       zip_safe=False,
       cmdclass={
