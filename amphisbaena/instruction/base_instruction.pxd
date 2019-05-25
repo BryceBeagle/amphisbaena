@@ -89,7 +89,7 @@ cdef class SoftwareInterruptInstruction(Instruction):
 cdef class UndefinedInstruction(Instruction):
     pass
 
-ctypedef enum Condition:
+cpdef public enum Condition:
     EQ = 0b0000,  # Equal
     NE = 0b0001,  # Not equal
     CS = 0b0010,  # Unsigned higher or same
