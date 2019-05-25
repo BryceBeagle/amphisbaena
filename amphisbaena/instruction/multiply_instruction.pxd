@@ -16,20 +16,4 @@ cdef class MultiplyInstruction(Instruction):
     cpdef public Register rm
     """3rd operand register"""
 
-    @staticmethod
-    cdef Flag _a(unsigned int instruction)
-
-    @staticmethod
-    cdef Flag _s(unsigned int instruction)
-
-    @staticmethod
-    cdef Register _rd(unsigned int instruction)
-
-    @staticmethod
-    cdef Register _rn(unsigned int instruction)
-
-    @staticmethod
-    cdef Register _rs(unsigned int instruction)
-
-    @staticmethod
-    cdef Register _rm(unsigned int instruction)
+    cdef Register _rn(self)

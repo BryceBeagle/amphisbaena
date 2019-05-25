@@ -26,35 +26,6 @@ cdef class DataProcessingInstruction(Instruction):
     cpdef public unsigned int imm
     """[Optional | 8 bit] Unsigned immediate value"""
 
-    @staticmethod
-    cdef Opcode _opcode(unsigned int instruction)
-
-    @staticmethod
-    cdef Flag _i(unsigned int instruction)
-
-    @staticmethod
-    cdef Flag _s(unsigned int instruction)
-
-    @staticmethod
-    cdef Register _rn(unsigned int instruction)
-
-    @staticmethod
-    cdef Register _rd(unsigned int instruction)
-
-    # If I is set
-    @staticmethod
-    cdef unsigned int _shift(unsigned int instruction)
-
-    @staticmethod
-    cdef Register _rm(unsigned int instruction)
-
-    # If I is not set
-    @staticmethod
-    cdef unsigned int _rotate(unsigned int instruction)
-
-    @staticmethod
-    cdef unsigned int _imm(unsigned int instruction)
-
 ctypedef enum Opcode:
     # arm7tdmi_datasheet_pt2.pdf#page=10
     AND = 0b0000,  # rd := op1 AND op2

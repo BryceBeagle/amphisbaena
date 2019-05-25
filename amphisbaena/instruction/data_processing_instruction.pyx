@@ -2,51 +2,15 @@ cdef class DataProcessingInstruction(Instruction):
     def __init__(self, unsigned int instruction):
         super().__init__(instruction)
 
-        self.i = DataProcessingInstruction._i(instruction)
-        self.opcode = DataProcessingInstruction._opcode(instruction)
-        self.s = DataProcessingInstruction._s(instruction)
-        self.rn = DataProcessingInstruction._rn(instruction)
-        self.rd = DataProcessingInstruction._rd(instruction)
+        self.i = <Flag> self.bit_range(25, 25)
+        self.opcode = <Opcode> self.bit_range(21, 24)
+        self.s = <Flag> self.bit_range(20, 20)
+        self.rn = <Register> self.bit_range(16, 19)
+        self.rd = <Register> self.bit_range(12, 15)
 
         if self.i:
-            self.shift = DataProcessingInstruction._shift(instruction)
-            self.rm = DataProcessingInstruction._rm(instruction)
+            self.shift = self.bit_range(4, 11)
+            self.rm = <Register> self.bit_range(0, 3)
         else:
-            self.rotate = DataProcessingInstruction._rotate(instruction)
-            self.imm = DataProcessingInstruction._imm(instruction)
-
-    @staticmethod
-    cdef Flag _i(unsigned int instruction):
-        return <Flag> Instruction.bit_range(instruction, 25, 25)
-
-    @staticmethod
-    cdef Opcode _opcode(unsigned int instruction):
-        return <Opcode> Instruction.bit_range(instruction, 21, 24)
-
-    @staticmethod
-    cdef Flag _s(unsigned int instruction):
-        return <Flag> Instruction.bit_range(instruction, 20, 20)
-
-    @staticmethod
-    cdef Register _rn(unsigned int instruction):
-        return <Register> Instruction.bit_range(instruction, 16, 19)
-
-    @staticmethod
-    cdef Register _rd(unsigned int instruction):
-        return <Register> Instruction.bit_range(instruction, 12, 15)
-
-    @staticmethod
-    cdef unsigned int _shift(unsigned int instruction):
-        return <Register> Instruction.bit_range(instruction, 4, 11)
-
-    @staticmethod
-    cdef Register _rm(unsigned int instruction):
-        return <Register> Instruction.bit_range(instruction, 0, 3)
-
-    @staticmethod
-    cdef unsigned int _rotate(unsigned int instruction):
-        return <Register> Instruction.bit_range(instruction, 8, 11)
-
-    @staticmethod
-    cdef unsigned int _imm(unsigned int instruction):
-        return <Register> Instruction.bit_range(instruction, 0, 7)
+            self.rotate = self.bit_range(8, 11)
+            self.imm = self.bit_range(0, 7)
