@@ -10,11 +10,7 @@ cdef class Instruction:
     cpdef public unsigned int instruction
     cpdef public Condition condition
 
-    @staticmethod
-    cdef unsigned int bit_range(unsigned int instruction, int start, int end)
-
-    @staticmethod
-    cdef Condition _condition(unsigned int instruction)
+    cdef unsigned int bit_range(self, int start, int end)
 
 ctypedef bint Flag
 
