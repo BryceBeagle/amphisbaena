@@ -5,7 +5,7 @@ cdef class MultiplyInstruction(Instruction):
         self.a = <Flag> self.bit_range(21, 21)
         self.s = <Flag> self.bit_range(20, 20)
         self.rd = <Register> self.bit_range(16, 19)
-        self.rn = <Register> self.bit_range(16, 19)
+        self.rn = <Register> self.bit_range(12, 15)
         self.rs = <Register> self.bit_range(8, 11)
         self.rm = <Register> self.bit_range(0, 3)
 
