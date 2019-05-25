@@ -25,7 +25,7 @@ cdef class MultiplyInstruction(Instruction):
     cdef Register _rn(unsigned int instruction):
         # "Rn is ignored, and should be set to zero for compatibility with
         # possible future upgrades to the instruction set."
-        rn = Instruction.bit_range(instruction, 12, 15)
+        cdef unsigned int rn = Instruction.bit_range(instruction, 12, 15)
         assert rn == 0b0000, "Multiply instruction Rn is not set to 0b0000"
         return <Register> rn
 
