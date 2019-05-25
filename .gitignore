@@ -1,6 +1,7 @@
 # Cython build
 *.so
 *.c
+amphisbaena/**/*.html
 build/
 cython_debug/
 
