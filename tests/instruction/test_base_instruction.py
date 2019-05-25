@@ -1,5 +1,3 @@
-import pytest
-
 from amphisbaena.instruction.base_instruction import Instruction
 # noinspection PyUnresolvedReferences
 from amphisbaena.instruction.base_instruction import Condition
@@ -53,5 +51,4 @@ class TestInstruction:
         assert Instruction(inst).condition == Condition.AL
 
         inst = 0b11110000_00000000_00000000_00000000
-        with pytest.raises(ValueError):
-            Instruction(inst)
+        assert Instruction(inst).condition == Condition.RESERVED

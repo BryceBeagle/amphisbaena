@@ -5,10 +5,8 @@ cdef class Instruction:
         self.instruction = instruction
         self.condition = <Condition> self.bit_range(28, 31)
 
-        # TODO: We may want to eventually not throw an exception and have a
-        # better system
         if self.condition == Condition.RESERVED:
-            raise ValueError("Instruction condition using reserved value")
+            logging.warn("Instruction has condition of RESERVED")
 
     cdef unsigned int bit_range(self, int start, int end):
         """Get range of bits from uint32. Inclusive-inclusive"""
