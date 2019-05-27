@@ -12,5 +12,5 @@ cdef class BranchInstruction(Instruction):
     cpdef Offset _offset(self)
 
 cpdef public enum BranchType:
-    BRANCH,
-    BRANCH_WITH_LINK
+    BRANCH = 0,
+    BRANCH_WITH_LINK = 1
