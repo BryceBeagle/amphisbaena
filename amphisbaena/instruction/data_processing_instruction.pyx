@@ -9,8 +9,14 @@ cdef class DataProcessingInstruction(Instruction):
         self.rd = <Register> self.bit_range(12, 15)
 
         if self.i:
-            self.shift = self.bit_range(4, 11)
-            self.rm = <Register> self.bit_range(0, 3)
+            self.rotate = <RotateAmount> self.bit_range(8, 11)
+            self.imm = <RotateImmediate> self.bit_range(0, 7)
         else:
-            self.rotate = self.bit_range(8, 11)
-            self.imm = self.bit_range(0, 7)
+            self.rm = <Register> self.bit_range(0, 3)
+            self.shift_format = <ShiftFormat> self.bit_range(4, 4)
+            self.shift_type = <ShiftType> self.bit_range(5, 6)
+
+            if self.shift_format == ShiftFormat.IMMEDIATE:
+                self.shift_amount = <ShiftAmount> self.bit_range(7, 11)
+            elif self.shift_format == ShiftFormat.REGISTER:
+                self.rs = <Register> self.bit_range(8, 11)

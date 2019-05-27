@@ -1,6 +1,13 @@
 from .base_instruction cimport Instruction
 from .base_instruction cimport Flag, Register
 
+ctypedef unsigned int ShiftAmount
+"""5 bit unsigned integer"""
+ctypedef unsigned int RotateAmount
+"""4 bit unsigned integer"""
+ctypedef unsigned int RotateImmediate
+"""8 bit unsigned integer"""
+
 # And FSR Transfer Instruction (I think for debugging)
 cdef class DataProcessingInstruction(Instruction):
     cpdef public Opcode opcode
@@ -15,10 +22,17 @@ cdef class DataProcessingInstruction(Instruction):
     """Destination register"""
 
     # If I is set
-    cpdef public unsigned int shift
-    """[Optional | 8 bit] Shift applied to Rm"""
+    cpdef public ShiftType shift_type
+    """Shift type"""
+    cpdef public ShiftFormat shift_format
+    """LSB of shift bit field that specifies whether to use immediate or 
+    register"""
+    cpdef public ShiftAmount shift_amount
+    """Amount to shift Rm by"""
+    cpdef public Register rs
+    """Shift amount specified in bottom byte of Rs register"""
     cpdef public Register rm
-    """[Optional] 2nd operand register"""
+    """2nd operand register"""
 
     # If I is not set
     cpdef public unsigned int rotate
@@ -26,7 +40,7 @@ cdef class DataProcessingInstruction(Instruction):
     cpdef public unsigned int imm
     """[Optional | 8 bit] Unsigned immediate value"""
 
-ctypedef enum Opcode:
+cpdef public enum Opcode:
     # arm7tdmi_datasheet_pt2.pdf#page=10
     AND = 0b0000,  # rd := op1 AND op2
     EOR = 0b0001,  # rd := op1 EOR op2
@@ -44,3 +58,16 @@ ctypedef enum Opcode:
     MOV = 0b1101,  # rd := op2
     BIC = 0b1110,  # rd := op1 AND NOT op2
     MVN = 0b1111,  # rd := NOT op2
+
+cpdef public enum ShiftFormat:
+    IMMEDIATE = 0,
+    REGISTER = 1
+
+# arm7tdmi_datasheet_pt2.pdf#page=12
+cpdef public enum ShiftType:
+    ASL = 0b00,  # Equivalent
+    LSL = 0b00,
+    LSR = 0b01,
+    ASR = 0b10,
+    ROR = 0b11,  # Equivalent
+    RRX = 0b11
