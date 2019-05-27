@@ -29,9 +29,6 @@ cdef class SingleDataSwapInstruction(Instruction):
     cpdef public Register rd
     cpdef public Register rm
 
-cdef class BranchAndExchangeInstruction(Instruction):
-    cpdef public Register rn
-
 cdef class HalfwordDataTransferRegisterOffsetInstruction(Instruction):
     cpdef public Flag p
     cpdef public Flag u
