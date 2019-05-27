@@ -71,10 +71,6 @@ cdef class BlockDataTransferInstruction(Instruction):
     cpdef public Register rn
     cpdef public RegisterList register_list
 
-cdef class BranchInstruction(Instruction):
-    cpdef public Flag l
-    cpdef public Offset[24] offset  # Signed
-
 cdef class SoftwareInterruptInstruction(Instruction):
     pass
 
