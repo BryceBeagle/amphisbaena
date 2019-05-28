@@ -6,3 +6,4 @@ from .branch_instruction import BranchInstruction
 from .branch_and_exchange_instruction import BranchAndExchangeInstruction
 from .data_processing_instruction import DataProcessingInstruction
 from .multiply_instruction import MultiplyInstruction
+from .multiply_long_instruction import MultiplyLongInstruction
