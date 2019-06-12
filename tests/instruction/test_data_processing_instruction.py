@@ -2,8 +2,9 @@ from amphisbaena.instruction import DataProcessingInstruction
 # noinspection PyUnresolvedReferences
 from amphisbaena.instruction import Condition, Register
 # noinspection PyUnresolvedReferences
-from amphisbaena.instruction.data_processing_instruction import Opcode, \
-    ShiftFormat, ShiftType
+from amphisbaena.instruction.base_instruction import ShiftFormat, ShiftType
+# noinspection PyUnresolvedReferences
+from amphisbaena.instruction.data_processing_instruction import Opcode
 
 
 class TestDataProcessingInstructionBitFields:

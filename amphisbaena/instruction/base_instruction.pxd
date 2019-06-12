@@ -6,6 +6,9 @@ ctypedef struct RegisterList:
     bint[12] _
 ctypedef bint Offset  # Make an array (struct?) of these yourself
 
+ctypedef unsigned int ShiftAmount
+"""5 bit unsigned integer"""
+
 cdef class Instruction:
     cpdef public unsigned int instruction
     cpdef public Condition condition
@@ -147,3 +150,16 @@ cpdef public enum Register:
     SPSR_abt = 0b10001
     SPSR_irq = 0b10001
     SPSR_und = 0b10001
+
+# arm7tdmi_datasheet_pt2.pdf#page=12
+cpdef public enum ShiftType:
+    ASL = 0b00,  # Equivalent
+    LSL = 0b00,
+    LSR = 0b01,
+    ASR = 0b10,
+    ROR = 0b11,  # Equivalent
+    RRX = 0b11
+
+cpdef public enum ShiftFormat:
+    IMMEDIATE = 0,
+    REGISTER = 1
