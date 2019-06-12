@@ -1,8 +1,7 @@
 from .base_instruction cimport Instruction
-from .base_instruction cimport Flag, Register
+from .base_instruction cimport Flag, Register, ShiftAmount, ShiftFormat, \
+    ShiftType
 
-ctypedef unsigned int ShiftAmount
-"""5 bit unsigned integer"""
 ctypedef unsigned int RotateAmount
 """4 bit unsigned integer"""
 ctypedef unsigned int RotateImmediate
@@ -58,16 +57,3 @@ cpdef public enum Opcode:
     MOV = 0b1101,  # rd := op2
     BIC = 0b1110,  # rd := op1 AND NOT op2
     MVN = 0b1111,  # rd := NOT op2
-
-cpdef public enum ShiftFormat:
-    IMMEDIATE = 0,
-    REGISTER = 1
-
-# arm7tdmi_datasheet_pt2.pdf#page=12
-cpdef public enum ShiftType:
-    ASL = 0b00,  # Equivalent
-    LSL = 0b00,
-    LSR = 0b01,
-    ASR = 0b10,
-    ROR = 0b11,  # Equivalent
-    RRX = 0b11
