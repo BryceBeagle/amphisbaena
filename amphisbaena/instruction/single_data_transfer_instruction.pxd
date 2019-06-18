@@ -6,7 +6,7 @@ ctypedef unsigned int ImmediateOffset
 """12 bit unsigned integer"""
 
 cdef class SingleDataTransferInstruction(Instruction):
-    cpdef public OffsetType offset_type
+    cpdef public SingleDataTransferOffsetType offset_type
     """Immediate or shift/register offset"""
     cpdef public IndexingType indexing_type
     """Add offset before or after transfer"""
@@ -35,9 +35,9 @@ cdef class SingleDataTransferInstruction(Instruction):
     cpdef public Register rm
     """Offset register"""
 
-cpdef public enum OffsetType:
-    OFFSET_IMMEDIATE = 0,
-    SHIFT_AND_REGISTER = 1
+cpdef public enum SingleDataTransferOffsetType:
+    SINGLE_DATA_TRANSFER_IMMEDIATE_OFFSET = 0,
+    SINGLE_DATA_TRANSFER_SHIFT_AND_REGISTER_OFFSET = 1
 
 cpdef public enum IndexingType:
     POST = 0, # Add offset after transfer
