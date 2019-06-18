@@ -2,7 +2,7 @@ cdef class SingleDataTransferInstruction(Instruction):
     def __init__(self, unsigned int instruction):
         super().__init__(instruction)
 
-        self.offset_type = <OffsetType> self.bit_range(25, 25)
+        self.offset_type = <SingleDataTransferOffsetType> self.bit_range(25, 25)
         self.indexing_type = <IndexingType> self.bit_range(24, 24)
         self.offset_direction = <OffsetDirection> self.bit_range(23, 23)
         self.transfer_quantity = <TransferQuantity> self.bit_range(22, 22)
@@ -12,7 +12,8 @@ cdef class SingleDataTransferInstruction(Instruction):
         self.rn = <Register> self.bit_range(16, 19)
         self.rd = <Register> self.bit_range(12, 15)
 
-        if self.offset_type == OffsetType.OFFSET_IMMEDIATE:
+        if self.offset_type == SingleDataTransferOffsetType.\
+                SINGLE_DATA_TRANSFER_IMMEDIATE_OFFSET:
             self.immediate_offset = <ImmediateOffset> self.bit_range(0, 11)
         else:
             # Should always be ShiftFormat.IMMEDIATE
