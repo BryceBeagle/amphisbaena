@@ -1,5 +1,5 @@
-from .base_instruction cimport Instruction
-from .base_instruction cimport Flag, Register, ShiftAmount, ShiftFormat, \
+from ..base_instruction cimport Instruction
+from ..base_instruction cimport Flag, Register, ShiftAmount, ShiftFormat, \
     ShiftType
 
 ctypedef unsigned int RotateAmount
@@ -9,7 +9,7 @@ ctypedef unsigned int RotateImmediate
 
 # And FSR Transfer Instruction (I think for debugging)
 cdef class DataProcessingInstruction(Instruction):
-    cpdef public Opcode opcode
+    cpdef public DataProcessingOpcode opcode
     """Opcode"""
     cpdef public Flag i
     """Immediate operand"""
@@ -39,7 +39,7 @@ cdef class DataProcessingInstruction(Instruction):
     cpdef public unsigned int imm
     """[Optional | 8 bit] Unsigned immediate value"""
 
-cpdef public enum Opcode:
+cpdef public enum DataProcessingOpcode:
     # arm7tdmi_datasheet_pt2.pdf#page=10
     AND = 0b0000,  # rd := op1 AND op2
     EOR = 0b0001,  # rd := op1 EOR op2

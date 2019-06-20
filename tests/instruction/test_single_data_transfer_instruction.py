@@ -4,7 +4,7 @@ from amphisbaena.instruction import Condition, Register
 # noinspection PyUnresolvedReferences
 from amphisbaena.instruction.base_instruction import ShiftFormat, ShiftType
 # noinspection PyUnresolvedReferences
-from amphisbaena.instruction.single_data_transfer_instruction import \
+from amphisbaena.instruction.transfer.single_data_transfer_instruction import \
     SingleDataTransferOffsetType, IndexingType, OffsetDirection, \
     TransferQuantity, TransferType, IndexingType
 

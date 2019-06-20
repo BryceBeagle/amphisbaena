@@ -1,0 +1,2 @@
+from .data_processing_instruction import DataProcessingInstruction
+from .data_processing_instruction import DataProcessingOpcode

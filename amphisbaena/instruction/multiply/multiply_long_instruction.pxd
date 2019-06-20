@@ -1,5 +1,5 @@
-from .base_instruction cimport Instruction
-from .base_instruction cimport Flag, Register
+from ..base_instruction cimport Instruction
+from ..base_instruction cimport Flag, Register
 
 cdef class MultiplyLongInstruction(Instruction):
     """Multiply and write a 64bit int to RdHi and RdLo"""

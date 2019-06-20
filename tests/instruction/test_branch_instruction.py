@@ -1,6 +1,6 @@
 from amphisbaena.instruction import BranchInstruction
 # noinspection PyUnresolvedReferences
-from amphisbaena.instruction.branch_instruction import BranchType
+from amphisbaena.instruction.branch.branch_instruction import BranchType
 
 
 class TestBranchInstructionBitFields:

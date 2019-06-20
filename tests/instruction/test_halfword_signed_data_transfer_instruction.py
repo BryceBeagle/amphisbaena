@@ -2,10 +2,10 @@ from amphisbaena.instruction import HalfwordSignedDataTransferInstruction
 # noinspection PyUnresolvedReferences
 from amphisbaena.instruction import Condition, Register
 # noinspection PyUnresolvedReferences
-from amphisbaena.instruction.halfword_signed_data_transfer_instruction import \
+from amphisbaena.instruction.transfer.halfword_signed_data_transfer_instruction import \
     HalfwordSignedDataTransferOffsetType
 # noinspection PyUnresolvedReferences
-from amphisbaena.instruction.single_data_transfer_instruction import \
+from amphisbaena.instruction.transfer.single_data_transfer_instruction import \
     IndexingType, OffsetDirection, TransferType
 
 
