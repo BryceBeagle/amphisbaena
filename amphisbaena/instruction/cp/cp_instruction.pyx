@@ -1,4 +1,4 @@
-from .base_instruction cimport Instruction
+from ..base_instruction cimport Instruction
 
 cdef class CoprocessorDataTransferInstruction(Instruction):
     def __init__(self):

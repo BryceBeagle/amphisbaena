@@ -1,5 +1,5 @@
-from .base_instruction cimport Instruction
-from .base_instruction cimport Flag, Register, Offset
+from ..base_instruction cimport Instruction
+from ..base_instruction cimport Flag, Register, Offset
 
 ctypedef Register CPRegister
 ctypedef struct CPNum:

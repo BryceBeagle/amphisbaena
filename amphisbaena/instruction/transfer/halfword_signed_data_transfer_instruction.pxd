@@ -1,5 +1,5 @@
-from .base_instruction cimport Instruction
-from .base_instruction cimport Flag, Register
+from ..base_instruction cimport Instruction
+from ..base_instruction cimport Flag, Register
 from .single_data_transfer_instruction cimport IndexingType, OffsetDirection, \
     TransferType
 

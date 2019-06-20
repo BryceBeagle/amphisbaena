@@ -1,5 +1,5 @@
-from .base_instruction cimport Instruction
-from .base_instruction cimport Flag, Register
+from ..base_instruction cimport Instruction
+from ..base_instruction cimport Flag, Register
 
 # arm7tdmi_datasheet_pt2.pdf#page=23
 cdef class MultiplyInstruction(Instruction):

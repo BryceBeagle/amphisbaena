@@ -1,5 +1,5 @@
-from .base_instruction cimport Instruction
-from .base_instruction cimport Flag, Register, ShiftAmount, ShiftFormat, \
+from ..base_instruction cimport Instruction
+from ..base_instruction cimport Flag, Register, ShiftAmount, ShiftFormat, \
     ShiftType
 
 ctypedef unsigned int ImmediateOffset

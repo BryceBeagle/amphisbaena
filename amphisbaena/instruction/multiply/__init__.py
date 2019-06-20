@@ -1,0 +1,2 @@
+from .multiply_instruction import MultiplyInstruction
+from .multiply_long_instruction import MultiplyLongInstruction

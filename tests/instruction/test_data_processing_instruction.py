@@ -4,7 +4,7 @@ from amphisbaena.instruction import Condition, Register
 # noinspection PyUnresolvedReferences
 from amphisbaena.instruction.base_instruction import ShiftFormat, ShiftType
 # noinspection PyUnresolvedReferences
-from amphisbaena.instruction.data_processing_instruction import Opcode
+from amphisbaena.instruction.data_processing import DataProcessingOpcode
 
 
 class TestDataProcessingInstructionBitFields:
@@ -15,7 +15,7 @@ class TestDataProcessingInstructionBitFields:
 
         assert instruction.condition == Condition.EQ
         assert instruction.i is False
-        assert instruction.opcode == Opcode.AND
+        assert instruction.opcode == DataProcessingOpcode.AND
         assert instruction.s is False
         assert instruction.rn == Register.R00
         assert instruction.rd == Register.R00
@@ -35,7 +35,7 @@ class TestDataProcessingInstructionBitFields:
         inst = 0b00000001_00100000_00000000_00000000
         instruction = DataProcessingInstruction(inst)
 
-        assert instruction.opcode == Opcode.TEQ
+        assert instruction.opcode == DataProcessingOpcode.TEQ
 
     def test_s_field(self):
         inst = 0b00000000_00010000_00000000_00000000

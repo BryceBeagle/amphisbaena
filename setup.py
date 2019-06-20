@@ -10,7 +10,6 @@ import os
 from setuptools import setup
 from Cython.Build import cythonize
 from Cython.Distutils.build_ext import build_ext
-import numpy
 
 logging.basicConfig(level=os.environ.get("LOGLEVEL", "WARN"))
 
@@ -52,13 +51,9 @@ class BuildExtCommand(build_ext):
 
 
 setup(name='amphisbaena',
-      packages=["amphisbaena",
-                "amphisbaena.instruction",
-                "amphisbaena.rom"],
       ext_modules=[],
-      requires=['Cython', 'numpy'],
+      requires=['Cython'],
       tests_require=["pytest"],
-      include_dirs=['.', numpy.get_include()],
       zip_safe=False,
       cmdclass={
           'build_ext': BuildExtCommand,

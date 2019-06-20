@@ -3,7 +3,7 @@ cdef class DataProcessingInstruction(Instruction):
         super().__init__(instruction)
 
         self.i = <Flag> self.bit_range(25, 25)
-        self.opcode = <Opcode> self.bit_range(21, 24)
+        self.opcode = <DataProcessingOpcode> self.bit_range(21, 24)
         self.s = <Flag> self.bit_range(20, 20)
         self.rn = <Register> self.bit_range(16, 19)
         self.rd = <Register> self.bit_range(12, 15)

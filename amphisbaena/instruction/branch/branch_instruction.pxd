@@ -1,4 +1,4 @@
-from .base_instruction cimport Instruction
+from ..base_instruction cimport Instruction
 
 ctypedef int Offset
 """24 bit signed integer"""
