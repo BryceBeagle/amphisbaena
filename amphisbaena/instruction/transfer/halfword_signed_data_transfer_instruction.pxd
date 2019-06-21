@@ -1,7 +1,6 @@
 from ..base_instruction cimport Instruction
 from ..base_instruction cimport Flag, Register
-from .single_data_transfer_instruction cimport IndexingType, OffsetDirection, \
-    TransferType
+from .base_transfer cimport IndexingType, OffsetDirection, TransferType
 
 ctypedef unsigned int ImmediateOffset
 """8 bit unsigned integer"""
@@ -23,5 +22,5 @@ cdef class HalfwordSignedDataTransferInstruction(Instruction):
     cdef ImmediateOffset _offset(self)
 
 cpdef public enum HalfwordSignedDataTransferOffsetType:
-    HALFWORD_SIGNED_DATA_TRANSFER_REGISTER_OFFSET = 0,
-    HALFWORD_SIGNED_DATA_TRANSFER_IMMEDIATE_OFFSET = 1
+    HSDTI_REGISTER_OFFSET = 0,
+    HSDTI_IMMEDIATE_OFFSET = 1

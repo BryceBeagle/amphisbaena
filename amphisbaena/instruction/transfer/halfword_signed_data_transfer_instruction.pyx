@@ -14,7 +14,7 @@ cdef class HalfwordSignedDataTransferInstruction(Instruction):
         self.h = <Flag> self.bit_range(5, 5)
 
         if self.offset_type == HalfwordSignedDataTransferOffsetType. \
-                HALFWORD_SIGNED_DATA_TRANSFER_REGISTER_OFFSET:
+                HSDTI_REGISTER_OFFSET:
             self.rm = <Register> self.bit_range(0, 3)
         else:
             self.offset = self._offset()

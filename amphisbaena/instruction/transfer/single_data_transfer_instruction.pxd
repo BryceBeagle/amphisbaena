@@ -1,6 +1,8 @@
 from ..base_instruction cimport Instruction
 from ..base_instruction cimport Flag, Register, ShiftAmount, ShiftFormat, \
     ShiftType
+from .base_transfer cimport IndexingType, OffsetDirection, TransferQuantity, \
+    TransferType
 
 ctypedef unsigned int ImmediateOffset
 """12 bit unsigned integer"""
@@ -36,21 +38,5 @@ cdef class SingleDataTransferInstruction(Instruction):
     """Offset register"""
 
 cpdef public enum SingleDataTransferOffsetType:
-    SINGLE_DATA_TRANSFER_IMMEDIATE_OFFSET = 0,
-    SINGLE_DATA_TRANSFER_SHIFT_AND_REGISTER_OFFSET = 1
-
-cpdef public enum IndexingType:
-    POST = 0, # Add offset after transfer
-    PRE = 1  # Add offset before transfer
-
-cpdef public enum OffsetDirection:
-    OFFSET_SUBTRACT = 0
-    OFFSET_ADD = 1,
-
-cpdef public enum TransferQuantity:
-    WORD = 0,
-    BYTE = 1
-
-cpdef public enum TransferType:
-    STORE = 0,
-    LOAD = 1
+    SDTI_IMMEDIATE_OFFSET = 0,
+    SDTI_SHIFT_AND_REGISTER_OFFSET = 1

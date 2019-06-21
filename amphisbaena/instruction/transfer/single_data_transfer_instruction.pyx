@@ -13,7 +13,7 @@ cdef class SingleDataTransferInstruction(Instruction):
         self.rd = <Register> self.bit_range(12, 15)
 
         if self.offset_type == SingleDataTransferOffsetType.\
-                SINGLE_DATA_TRANSFER_IMMEDIATE_OFFSET:
+                SDTI_IMMEDIATE_OFFSET:
             self.immediate_offset = <ImmediateOffset> self.bit_range(0, 11)
         else:
             # Should always be ShiftFormat.IMMEDIATE
