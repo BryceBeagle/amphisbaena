@@ -5,8 +5,8 @@ from amphisbaena.instruction import Condition, Register
 from amphisbaena.instruction.transfer.halfword_signed_data_transfer_instruction import \
     HalfwordSignedDataTransferOffsetType
 # noinspection PyUnresolvedReferences
-from amphisbaena.instruction.transfer.single_data_transfer_instruction import \
-    IndexingType, OffsetDirection, TransferType
+from amphisbaena.instruction.transfer.base_transfer import IndexingType, \
+    OffsetDirection, TransferType
 
 
 class TestHalfwordSignedDataTransferInstruction:
@@ -19,7 +19,7 @@ class TestHalfwordSignedDataTransferInstruction:
         assert instruction.offset_direction == OffsetDirection.OFFSET_SUBTRACT
         assert instruction.offset_type == \
                HalfwordSignedDataTransferOffsetType. \
-                   HALFWORD_SIGNED_DATA_TRANSFER_REGISTER_OFFSET
+                   HSDTI_REGISTER_OFFSET
         assert instruction.write_back is False
         assert instruction.transfer_type == TransferType.STORE
         assert instruction.rn == Register.R00
@@ -46,7 +46,7 @@ class TestHalfwordSignedDataTransferInstruction:
 
         assert instruction.offset_type == \
                HalfwordSignedDataTransferOffsetType. \
-                   HALFWORD_SIGNED_DATA_TRANSFER_IMMEDIATE_OFFSET
+                   HSDTI_IMMEDIATE_OFFSET
 
     def test_write_back_field(self):
         inst = 0b00000000_00100000_00000000_10010000
@@ -96,5 +96,5 @@ class TestHalfwordSignedDataTransferInstruction:
 
         assert instruction.offset_type == \
                HalfwordSignedDataTransferOffsetType. \
-                   HALFWORD_SIGNED_DATA_TRANSFER_IMMEDIATE_OFFSET
+                   HSDTI_IMMEDIATE_OFFSET
         assert instruction.offset == 0b10100010

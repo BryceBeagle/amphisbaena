@@ -4,9 +4,11 @@ from amphisbaena.instruction import Condition, Register
 # noinspection PyUnresolvedReferences
 from amphisbaena.instruction.base_instruction import ShiftFormat, ShiftType
 # noinspection PyUnresolvedReferences
+from amphisbaena.instruction.transfer.base_transfer import IndexingType, \
+    OffsetDirection, TransferQuantity, TransferType
+# noinspection PyUnresolvedReferences
 from amphisbaena.instruction.transfer.single_data_transfer_instruction import \
-    SingleDataTransferOffsetType, IndexingType, OffsetDirection, \
-    TransferQuantity, TransferType, IndexingType
+    SingleDataTransferOffsetType
 
 
 class TestSingleDataProcessingInstructionBitFields:
@@ -16,8 +18,8 @@ class TestSingleDataProcessingInstructionBitFields:
         instruction = SingleDataTransferInstruction(inst)
 
         assert instruction.condition == Condition.EQ
-        assert instruction.offset_type == SingleDataTransferOffsetType.\
-            SINGLE_DATA_TRANSFER_IMMEDIATE_OFFSET
+        assert instruction.offset_type == SingleDataTransferOffsetType. \
+            SDTI_IMMEDIATE_OFFSET
         assert instruction.indexing_type == IndexingType.POST
         assert instruction.offset_direction == OffsetDirection.OFFSET_SUBTRACT
         assert instruction.transfer_quantity == TransferQuantity.WORD
@@ -31,8 +33,8 @@ class TestSingleDataProcessingInstructionBitFields:
         inst = 0b00000110_00000000_00000000_00000000
         instruction = SingleDataTransferInstruction(inst)
 
-        assert instruction.offset_type == SingleDataTransferOffsetType.\
-            SINGLE_DATA_TRANSFER_SHIFT_AND_REGISTER_OFFSET
+        assert instruction.offset_type == SingleDataTransferOffsetType. \
+            SDTI_SHIFT_AND_REGISTER_OFFSET
 
     def test_indexing_type_field(self):
         inst = 0b00000101_00000000_00000000_00000000
@@ -86,22 +88,22 @@ class TestSingleDataProcessingInstructionBitFields:
         inst = 0b00000110_00000000_00000000_00010000
         instruction = SingleDataTransferInstruction(inst)
 
-        assert instruction.offset_type == SingleDataTransferOffsetType.\
-            SINGLE_DATA_TRANSFER_SHIFT_AND_REGISTER_OFFSET
+        assert instruction.offset_type == SingleDataTransferOffsetType. \
+            SDTI_SHIFT_AND_REGISTER_OFFSET
         assert instruction.shift_format == ShiftFormat.REGISTER
 
     def test_shift_type_field(self):
         inst = 0b00000110_00000000_00000000_01000000
         instruction = SingleDataTransferInstruction(inst)
 
-        assert instruction.offset_type == SingleDataTransferOffsetType.\
-            SINGLE_DATA_TRANSFER_SHIFT_AND_REGISTER_OFFSET
+        assert instruction.offset_type == SingleDataTransferOffsetType. \
+            SDTI_SHIFT_AND_REGISTER_OFFSET
         assert instruction.shift_type == ShiftType.ASR
 
     def test_shift_amount_field(self):
         inst = 0b00000110_00000000_00001000_10000000
         instruction = SingleDataTransferInstruction(inst)
 
-        assert instruction.offset_type == SingleDataTransferOffsetType.\
-            SINGLE_DATA_TRANSFER_SHIFT_AND_REGISTER_OFFSET
+        assert instruction.offset_type == SingleDataTransferOffsetType. \
+            SDTI_SHIFT_AND_REGISTER_OFFSET
         assert instruction.shift_amount == 0b10001
