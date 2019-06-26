@@ -15,3 +15,5 @@ from .multiply import MultiplyLongInstruction
 from .transfer import BlockDataTransferInstruction
 from .transfer import HalfwordSignedDataTransferInstruction
 from .transfer import SingleDataTransferInstruction
+
+from .swap import SingleDataSwapInstruction
