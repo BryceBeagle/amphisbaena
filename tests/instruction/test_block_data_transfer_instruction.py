@@ -12,6 +12,7 @@ class TestBlockDataTransferInstructionBitFields:
         inst = 0b00001000_00000000_00000000_00000000
         instruction = BlockDataTransferInstruction(inst)
 
+        assert instruction.condition == Condition.EQ
         assert instruction.indexing_type == IndexingType.POST
         assert instruction.offset_direction == OffsetDirection.OFFSET_SUBTRACT
         assert instruction.s is False
