@@ -1,3 +1,4 @@
+from .block_data_transfer_instruction import BlockDataTransferInstruction
 from .halfword_signed_data_transfer_instruction import \
     HalfwordSignedDataTransferInstruction
 from .single_data_transfer_instruction import SingleDataTransferInstruction
