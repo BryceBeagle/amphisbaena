@@ -17,3 +17,5 @@ from .transfer import HalfwordSignedDataTransferInstruction
 from .transfer import SingleDataTransferInstruction
 
 from .swap import SingleDataSwapInstruction
+
+from .interrupt import SoftwareInterruptInstruction

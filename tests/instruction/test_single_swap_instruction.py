@@ -9,7 +9,7 @@ from amphisbaena.instruction.swap.single_data_swap_instruction \
 class TestSingleDataSwapInstructionBitFields:
 
     def test_all_zeros(self):
-        inst = 0b0000001_00000000_00000000_10010000
+        inst = 0b00000001_00000000_00000000_10010000
         instruction = SingleDataSwapInstruction(inst)
 
         assert instruction.condition == Condition.EQ
