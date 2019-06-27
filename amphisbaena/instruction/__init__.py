@@ -3,7 +3,7 @@ from .base_instruction import Instruction
 # noinspection PyUnresolvedReferences
 from .base_instruction import Condition, Register
 
-from .cp import CoprocessorDataTransferInstruction
+from .coprocessor import CoprocessorDataTransferInstruction
 
 from .branch import BranchInstruction
 from .branch import BranchAndExchangeInstruction
