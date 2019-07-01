@@ -15,6 +15,7 @@ class TestHalfwordSignedDataTransferInstruction:
         inst = 0b00000000_00000000_00000000_10010000
         instruction = HalfwordSignedDataTransferInstruction(inst)
 
+        assert instruction.condition == Condition.EQ
         assert instruction.indexing_type == IndexingType.POST
         assert instruction.offset_direction == OffsetDirection.OFFSET_SUBTRACT
         assert instruction.offset_type == \
