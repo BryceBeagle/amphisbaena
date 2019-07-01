@@ -1,4 +1,4 @@
-from amphisbaena.instruction import CoprocessorDataOperationsInstruction
+from amphisbaena.instruction import CoprocessorRegisterTransfersInstruction
 # noinspection PyUnresolvedReferences
 from amphisbaena.instruction import Condition, Register
 # noinspection PyUnresolvedReferences
@@ -6,11 +6,11 @@ from amphisbaena.instruction.transfer.base_transfer import IndexingType, \
     OffsetDirection, TransferType
 
 
-class TestCoprocessorDataOperationsInstructionBitFields:
+class TestCoprocessorRegisterTransfersInstructionBitFields:
 
     def test_all_zeros(self):
-        inst = 0b00001110_00000000_00000000_00000000
-        instruction = CoprocessorDataOperationsInstruction(inst)
+        inst = 0b00001110_00000000_00000000_00010000
+        instruction = CoprocessorRegisterTransfersInstruction(inst)
 
         assert instruction.condition == Condition.EQ
         assert instruction.cp_opcode == 0b0000
@@ -21,37 +21,37 @@ class TestCoprocessorDataOperationsInstructionBitFields:
         assert instruction.cp_rm == Register.R00
 
     def test_cp_opcode_field(self):
-        inst = 0b00001110_11010000_00000000_00000000
-        instruction = CoprocessorDataOperationsInstruction(inst)
+        inst = 0b00001110_11010000_00000000_00010000
+        instruction = CoprocessorRegisterTransfersInstruction(inst)
 
         assert instruction.cp_opcode == 0b1101
 
     def test_cp_rn_field(self):
-        inst = 0b00001110_00001101_00000000_00000000
-        instruction = CoprocessorDataOperationsInstruction(inst)
+        inst = 0b00001110_00001101_00000000_00010000
+        instruction = CoprocessorRegisterTransfersInstruction(inst)
 
         assert instruction.cp_rn == Register.R13
 
     def test_cp_rd_field(self):
-        inst = 0b00001110_00000000_11000000_00000000
-        instruction = CoprocessorDataOperationsInstruction(inst)
+        inst = 0b00001110_00000000_11000000_00010000
+        instruction = CoprocessorRegisterTransfersInstruction(inst)
 
         assert instruction.cp_rd == Register.R12
 
     def test_cp_num_field(self):
-        inst = 0b00001110_00000000_00001111_00000000
-        instruction = CoprocessorDataOperationsInstruction(inst)
+        inst = 0b00001110_00000000_00001111_00010000
+        instruction = CoprocessorRegisterTransfersInstruction(inst)
 
         assert instruction.cp_num == 0b1111
 
     def test_cp_info_field(self):
-        inst = 0b00001110_00000000_00000000_10100000
-        instruction = CoprocessorDataOperationsInstruction(inst)
+        inst = 0b00001110_00000000_00000000_10110000
+        instruction = CoprocessorRegisterTransfersInstruction(inst)
 
         assert instruction.cp_info == 0b101
 
     def test_cp_rm_field(self):
-        inst = 0b00001110_00000000_00000000_00001000
-        instruction = CoprocessorDataOperationsInstruction(inst)
+        inst = 0b00001110_00000000_00000000_00011000
+        instruction = CoprocessorRegisterTransfersInstruction(inst)
 
         assert instruction.cp_rm == Register.R08
