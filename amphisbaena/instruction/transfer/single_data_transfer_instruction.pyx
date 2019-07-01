@@ -12,7 +12,7 @@ cdef class SingleDataTransferInstruction(Instruction):
         self.rn = <Register> self.bit_range(16, 19)
         self.rd = <Register> self.bit_range(12, 15)
 
-        if self.offset_type == SingleDataTransferOffsetType.\
+        if self.offset_type == SingleDataTransferOffsetType. \
                 SDTI_IMMEDIATE_OFFSET:
             self.immediate_offset = <ImmediateOffset> self.bit_range(0, 11)
         else:
