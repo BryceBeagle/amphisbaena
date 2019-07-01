@@ -1,4 +1,4 @@
-cdef class CoprocessorDataTransferInstruction(Instruction):
+cdef class CoprocessorDataTransfersInstruction(Instruction):
     def __init__(self, unsigned int instruction):
         super().__init__(instruction)
 

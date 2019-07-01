@@ -8,7 +8,7 @@ from .base_coprocessor cimport CPNum
 ctypedef unsigned int Offset
 """8 bit unsigned integer"""
 
-cdef class CoprocessorDataTransferInstruction(Instruction):
+cdef class CoprocessorDataTransfersInstruction(Instruction):
     cpdef public IndexingType indexing_type
     """Calculation performed before or after the base is used as the transfer
     address"""

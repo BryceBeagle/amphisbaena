@@ -3,8 +3,9 @@ from .base_instruction import Instruction
 # noinspection PyUnresolvedReferences
 from .base_instruction import Condition, Register
 
-from .coprocessor import CoprocessorDataTransferInstruction
 from .coprocessor import CoprocessorDataOperationsInstruction
+from .coprocessor import CoprocessorDataTransfersInstruction
+from .coprocessor import CoprocessorRegisterTransfersInstruction
 
 from .branch import BranchInstruction
 from .branch import BranchAndExchangeInstruction

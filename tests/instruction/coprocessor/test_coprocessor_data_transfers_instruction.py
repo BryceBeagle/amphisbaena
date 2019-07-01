@@ -1,4 +1,4 @@
-from amphisbaena.instruction import CoprocessorDataTransferInstruction
+from amphisbaena.instruction import CoprocessorDataTransfersInstruction
 # noinspection PyUnresolvedReferences
 from amphisbaena.instruction import Condition, Register
 # noinspection PyUnresolvedReferences
@@ -6,11 +6,11 @@ from amphisbaena.instruction.transfer.base_transfer import IndexingType, \
     OffsetDirection, TransferType
 
 
-class TestCoprocessorDataTransferInstructionBitFields:
+class TestCoprocessorDataTransfersInstructionBitFields:
 
     def test_all_zeros(self):
         inst = 0b00001100_00000000_00000000_00000000
-        instruction = CoprocessorDataTransferInstruction(inst)
+        instruction = CoprocessorDataTransfersInstruction(inst)
 
         assert instruction.condition == Condition.EQ
         assert instruction.indexing_type == IndexingType.POST
@@ -25,54 +25,54 @@ class TestCoprocessorDataTransferInstructionBitFields:
 
     def test_indexing_type_field(self):
         inst = 0b00001101_00000000_00000000_00000000
-        instruction = CoprocessorDataTransferInstruction(inst)
+        instruction = CoprocessorDataTransfersInstruction(inst)
 
         assert instruction.indexing_type == IndexingType.PRE
 
     def test_offset_direction_field(self):
         inst = 0b00001100_10000000_00000000_00000000
-        instruction = CoprocessorDataTransferInstruction(inst)
+        instruction = CoprocessorDataTransfersInstruction(inst)
 
         assert instruction.offset_direction == OffsetDirection.OFFSET_ADD
 
     def test_transfer_length_field(self):
         inst = 0b00001100_01000000_00000000_00000000
-        instruction = CoprocessorDataTransferInstruction(inst)
+        instruction = CoprocessorDataTransfersInstruction(inst)
 
         assert instruction.transfer_length == 1
 
     def test_write_back_field(self):
         inst = 0b00001100_00100000_00000000_00000000
-        instruction = CoprocessorDataTransferInstruction(inst)
+        instruction = CoprocessorDataTransfersInstruction(inst)
 
         assert instruction.write_back is True
 
     def test_transfer_type_field(self):
         inst = 0b00001100_00010000_00000000_00000000
-        instruction = CoprocessorDataTransferInstruction(inst)
+        instruction = CoprocessorDataTransfersInstruction(inst)
 
         assert instruction.transfer_type == TransferType.LOAD
 
     def test_rn_field(self):
         inst = 0b00001100_00001001_00000000_00000000
-        instruction = CoprocessorDataTransferInstruction(inst)
+        instruction = CoprocessorDataTransfersInstruction(inst)
 
         assert instruction.rn == Register.R09
 
     def test_cp_rd_field(self):
         inst = 0b00001100_00000000_11100000_00000000
-        instruction = CoprocessorDataTransferInstruction(inst)
+        instruction = CoprocessorDataTransfersInstruction(inst)
 
         assert instruction.cp_rd == Register.R14
 
     def test_cp_num_field(self):
         inst = 0b00001100_00000000_00001010_00000000
-        instruction = CoprocessorDataTransferInstruction(inst)
+        instruction = CoprocessorDataTransfersInstruction(inst)
 
         assert instruction.cp_num == 10
 
     def test_offset_field(self):
         inst = 0b00001100_00000000_00000000_10010100
-        instruction = CoprocessorDataTransferInstruction(inst)
+        instruction = CoprocessorDataTransfersInstruction(inst)
 
         assert instruction.offset == 0b10010100
