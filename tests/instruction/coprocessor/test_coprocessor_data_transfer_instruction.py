@@ -2,9 +2,6 @@ from amphisbaena.instruction import CoprocessorDataTransferInstruction
 # noinspection PyUnresolvedReferences
 from amphisbaena.instruction import Condition, Register
 # noinspection PyUnresolvedReferences
-from amphisbaena.instruction.swap.single_data_swap_instruction \
-    import SwapQuantity
-# noinspection PyUnresolvedReferences
 from amphisbaena.instruction.transfer.base_transfer import IndexingType, \
     OffsetDirection, TransferType
 
