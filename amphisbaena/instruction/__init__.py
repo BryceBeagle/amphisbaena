@@ -9,15 +9,18 @@ from .coprocessor import CoprocessorRegisterTransfersInstruction
 
 from .branch import BranchInstruction
 from .branch import BranchAndExchangeInstruction
+
 from .data_processing import DataProcessingInstruction
+
+from .interrupt import SoftwareInterruptInstruction
 
 from .multiply import MultiplyInstruction
 from .multiply import MultiplyLongInstruction
+
+from .swap import SingleDataSwapInstruction
 
 from .transfer import BlockDataTransferInstruction
 from .transfer import HalfwordSignedDataTransferInstruction
 from .transfer import SingleDataTransferInstruction
 
-from .swap import SingleDataSwapInstruction
-
-from .interrupt import SoftwareInterruptInstruction
+from undefined import UndefinedInstruction
