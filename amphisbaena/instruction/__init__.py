@@ -4,6 +4,7 @@ from .base_instruction import Instruction
 from .base_instruction import Condition, Register
 
 from .coprocessor import CoprocessorDataTransferInstruction
+from .coprocessor import CoprocessorDataOperationsInstruction
 
 from .branch import BranchInstruction
 from .branch import BranchAndExchangeInstruction
