@@ -17,9 +17,9 @@ cdef class HalfwordSignedDataTransferInstruction(Instruction):
                 HSDTI_REGISTER_OFFSET:
             self.rm = <Register> self.bit_range(0, 3)
         else:
-            self.offset = self._offset()
+            self.immediate_offset = self._immediate_offset()
 
-    cdef ImmediateOffset _offset(self):
+    cdef ImmediateOffset _immediate_offset(self):
         cdef unsigned int low_nibble = self.bit_range(0, 3)
         cdef unsigned int high_nibble = self.bit_range(8, 11)
 

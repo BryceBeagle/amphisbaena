@@ -22,9 +22,12 @@ cdef class SingleDataTransferInstruction(Instruction):
     """Load or store transfer"""
 
     cpdef public Register rn
+    """Base register"""
     cpdef public Register rd
+    """Source/destination register"""
 
     cpdef public ImmediateOffset immediate_offset
+    """Offset from base"""
 
     ### Note: No rs for this instruction
     cpdef public ShiftType shift_type
