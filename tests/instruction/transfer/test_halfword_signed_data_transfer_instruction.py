@@ -25,6 +25,7 @@ class TestHalfwordSignedDataTransferInstruction:
         assert instruction.transfer_type == TransferType.STORE
         assert instruction.rn == Register.R00
         assert instruction.rd == Register.R00
+        assert instruction.immediate_offset == 0
         assert instruction.s is False
         assert instruction.h is False
         assert instruction.rm == Register.R00
@@ -73,6 +74,15 @@ class TestHalfwordSignedDataTransferInstruction:
 
         assert instruction.rd == Register.R14
 
+    def test_offset_field(self):
+        inst = 0b00000000_01000000_00001010_10010010
+        instruction = HalfwordSignedDataTransferInstruction(inst)
+
+        assert instruction.offset_type == \
+               HalfwordSignedDataTransferOffsetType. \
+                   HSDTI_IMMEDIATE_OFFSET
+        assert instruction.immediate_offset == 0b10100010
+
     def test_s_field(self):
         inst = 0b00000000_00000000_00000000_11010000
         instruction = HalfwordSignedDataTransferInstruction(inst)
@@ -90,12 +100,3 @@ class TestHalfwordSignedDataTransferInstruction:
         instruction = HalfwordSignedDataTransferInstruction(inst)
 
         assert instruction.rm == Register.R08
-
-    def test_offset_field(self):
-        inst = 0b00000000_01000000_00001010_10010010
-        instruction = HalfwordSignedDataTransferInstruction(inst)
-
-        assert instruction.offset_type == \
-               HalfwordSignedDataTransferOffsetType. \
-                   HSDTI_IMMEDIATE_OFFSET
-        assert instruction.offset == 0b10100010

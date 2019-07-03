@@ -19,3 +19,4 @@ cdef class BlockDataTransferInstruction(Instruction):
     cpdef public Register rn
     """Base register"""
     cpdef public RegisterList register_list
+    """List of registers to transfer"""
